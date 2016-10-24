@@ -1,0 +1,13 @@
+{
+    "name": "heshanh/gofax",
+    "description": "GoFax API",
+    "type": "composer-plugin",
+    "authors": [
+        {
+            "name": "Heshan",
+            "email": "heshanh@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
