@@ -1,19 +1,19 @@
 {
-    "name": "heshanh/gofax",
-    "description": "GoFax API",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Heshan",
-            "email": "heshanh@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "heshanh\\GoFax\\": "src/"
-        }
-    },
-    "minimum-stability": "dev",
-    "require": {}
+  "name": "heshanh/gofax",
+  "description": "GoFax API",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Heshan",
+      "email": "heshanh@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "heshanh\\GoFax\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {}
 }

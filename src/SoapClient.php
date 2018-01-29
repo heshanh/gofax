@@ -9,35 +9,51 @@ class SoapClient
     private $client;
 
 
-
+    /**
+     * SoapClient constructor.
+     * @param $client
+     * @param $token
+     */
     public function __construct($client, $token)
     {
-
         $this->setAPIKey($token);
         $this->setUrl($client);
 
-        $this->client =  new \SoapClient($this->getUrl());
+        $this->client = new \SoapClient($this->getUrl());
 
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return $this->client->__getFunctions();
     }
 
+    /**
+     * @return \SoapClient
+     */
     public function getClient()
     {
-       return $this->client;
-
+        return $this->client;
     }
 
+    /**
+     * @param $url
+     * @return $this
+     */
     public function setUrl($url)
     {
         $this->api_url = $url;
         return $this;
     }
 
+    /**
+     * @param $key
+     * @return $this
+     */
     public function setAPIKey($key)
     {
         $this->api_key = $key;
@@ -45,16 +61,26 @@ class SoapClient
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
     public function getAPIKey()
     {
         return $this->api_key;
     }
 
+    /**
+     * @return mixed
+     */
     public function getUrl()
     {
         return $this->api_url;
     }
 
+    /**
+     * @param array $args
+     * @return \stdClass
+     */
     function getParams($args = array())
     {
         $vars = new \stdClass();
@@ -67,34 +93,32 @@ class SoapClient
         return $vars;
     }
 
+    /**
+     * @return mixed
+     * @throws Exceptions\UnexpectedException
+     */
     public function getReceivedFaxes()
     {
-        try
-        {
+        try {
             return $this->client->ReceivedFaxes($this->getParams())->ReceivedFaxesResult->ClientReceivedFax;
-      /*      return $this->client->__soapCall('ReceivedFaxes',
-                [
-                    'token' => $this->getAPIKey()
-                ]);*/
-        }
-        catch(\Exception $e)
-        {
-            throw new Exceptions\UnexpectedException((string) $e->getMessage());
+        } catch (\Exception $e) {
+            throw new Exceptions\UnexpectedException((string)$e->getMessage());
         }
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * @throws Exceptions\UnexpectedException
+     */
     public function getFaxDataFromId($id)
     {
         $args['receiveFaxID'] = $id;
 
-        try
-        {
-//            return $this->client->ReceiveFaxData($this->soapClient->getArgs($args))->ReceiveFaxDataResult;
-            return $this->client->__soapCall('ReceiveFaxData');
-        }
-        catch(\Exception $e)
-        {
-            throw new Exceptions\UnexpectedException((string) $e->getResponse()->getBody(), $e->getResponse()->getStatusCode());
+        try {
+            return $this->client->ReceiveFaxData($this->getParams($args))->ReceiveFaxDataResult;
+        } catch (\Exception $e) {
+            throw new Exceptions\UnexpectedException((string)$e->getMessage());
         }
     }
 
