@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 class LaravelServiceProvider extends ServiceProvider
 {
+
     /**
      * Register bindings in the container.
      *
@@ -14,12 +15,12 @@ class LaravelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
         // Setup the soap client
         $this->app->singleton(GoFax\SoapClient::class, function () {
-            return (new GoFax\SoapClient())
-                ->setToken(config('services.bronto.soapToken'))
-                ->setListId(config('services.bronto.listId'));
+            return (new GoFax\SoapClient(
+                config('services.gofax.api_url'),
+                config('services.gofax.api_key'))
+            );
         });
     }
 }

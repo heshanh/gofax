@@ -9,6 +9,11 @@
             "email": "heshanh@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "heshanh\\GoFax\\": "src/"
+        }
+    },
     "minimum-stability": "dev",
     "require": {}
 }
