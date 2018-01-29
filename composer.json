@@ -1,7 +1,8 @@
 {
     "name": "heshanh/gofax",
     "description": "GoFax API",
-    "type": "composer-plugin",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Heshan",
