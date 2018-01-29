@@ -64,7 +64,7 @@ To resolve a client, you simply pull it from the service container. This can be 
 ```php
 use heshanh\GoFax;
 
-public function yourControllerMethod(Client $client) {
+public function yourControllerMethod(SoapClient $client) {
     // Call methods on $client
 }
 ```
